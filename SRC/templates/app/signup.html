@@ -1,0 +1,21 @@
+{% extends "app/layout.html" %}
+
+{% block title %}Create an account{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <h1>Create an account</h1>
+    <form method='POST' class="form-group">
+        {% csrf_token %}
+        {{ form | crispy }}
+        <button type="submit" class="btn btn-primary">Sign up</button>
+    </form>
+{% endblock %}
+
+{% block scripts %}
+
+{% load static %}
+<script src="{% static 'app/scripts/jquery.validate.min.js' %}"></script>
+
+{% endblock %}
