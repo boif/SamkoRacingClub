@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpRequest
 from SRC.models import Image
 from SRC.forms import RegisterForm, AddImage
+from django.template import loader
 
 
 
@@ -45,7 +46,6 @@ def about(request):
     )
 
 def images(request):
-    assert isinstance(request, HttpRequest)
     images = Image.objects.filter()
     context = {'images': images,
                'year': datetime.now().year,
