@@ -3,12 +3,10 @@ from django.shortcuts import render, redirect
 from django.http import HttpRequest
 from SRC.models import Image
 from SRC.forms import RegisterForm, AddImage
-from django.template import loader
 
 
 
 def home(request):
-    """Renders the home page."""
     assert isinstance(request, HttpRequest)
     return render(
         request,
@@ -20,7 +18,6 @@ def home(request):
     )
 
 def contact(request):
-    """Renders the contact page."""
     assert isinstance(request, HttpRequest)
     return render(
         request,
@@ -33,7 +30,6 @@ def contact(request):
     )
 
 def about(request):
-    """Renders the about page."""
     assert isinstance(request, HttpRequest)
     return render(
         request,
@@ -46,6 +42,7 @@ def about(request):
     )
 
 def images(request):
+    assert isinstance(request, HttpRequest)
     images = Image.objects.filter()
     context = {'images': images,
                'year': datetime.now().year,
@@ -59,6 +56,7 @@ def images(request):
     )
 
 def register(request):
+    assert isinstance(request, HttpRequest)
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
