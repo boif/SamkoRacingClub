@@ -48,7 +48,7 @@ def images(request):
                'message': 'GPZ INDUSTRIEZZZ COLLECTION'}
     return render(
         request,
-        'app/imagespage.html',
+        'app/images.html',
         context=context,
 
     )
