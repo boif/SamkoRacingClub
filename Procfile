@@ -1,1 +1,1 @@
-web: gunicorn SRC.wsgi --log-file -
+web: gunicorn SamkoRacingClub.wsgi --log-file -
