@@ -8,11 +8,19 @@
 
 <h2>{{ title }}</h2>
 
+{% if user.is_authenticated %}
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form | crispy }}
     <button type="submit" class="btn btn-primary">Upload</button>
 </form>
+
+{% else %}
+
+<p>Log in to add an image</p>
+<p><a href="{% url 'login' %}" class="btn btn-primary btn-large">Log in</a></p>
+
+{% endif %}
 
 {% endblock %}
 
