@@ -87,3 +87,14 @@ def addimage(request):
         'year': datetime.now().year,
         }
     )
+
+def profile(request):
+    assert isinstance(request, HttpRequest)
+    return render(
+        request,
+        'app/profile.html',
+        {
+            'title': 'Your profile',
+            'year': datetime.now().year,
+        }
+    )
