@@ -42,14 +42,13 @@ def about(request):
 def images(request):
     assert isinstance(request, HttpRequest)
     images = Image.objects.filter()
-    context = {'images': images,
-               'year': datetime.now().year,
-               'title':'Images',
-               'message': 'GPZ INDUSTRIEZZZ COLLECTION'}
     return render(
         request,
         'app/images.html',
-        context=context,
+        {'images': images,
+         'year': datetime.now().year,
+         'title': 'Images',
+         'message': 'GPZ INDUSTRIEZZZ COLLECTION'}
 
     )
 
