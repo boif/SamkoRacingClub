@@ -1,8 +1,9 @@
 from datetime import datetime
 from django.shortcuts import render, redirect
 from django.http import HttpRequest
-from SRC.models import Image
+from SRC.models import Image, Profile
 from SRC.forms import RegisterForm, AddImage
+
 
 
 
@@ -89,10 +90,12 @@ def addimage(request):
 
 def profile(request):
     assert isinstance(request, HttpRequest)
+    profile_pic = Profile.objects.all()
     return render(
         request,
         'app/profile.html',
         {
+            'profile_pic': profile_pic,
             'title': 'Your profile',
             'year': datetime.now().year,
         }
