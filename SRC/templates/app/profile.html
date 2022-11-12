@@ -1,3 +1,5 @@
+{% extends "app/layout.html" %}
+
 {% block content %}
 
 {% load static %}
@@ -15,7 +17,7 @@
 
  {% if user.profile.profile_pic %}
 
- <img src="{% static 'images\profile\default.png' %}" height=292.5 width=292.5>
+ <img src="{{ MEDIA_URL }} {{ user.profile.profile_pic.url }}" height=292.5 width=292.5>
 
  {% else %}
 
@@ -24,9 +26,12 @@
  {% endif %}
 
 <h3>{{ user.username }}</h3>
-<p>{{ profile.vk }}</p>
+<a href="{{ user.profile.vk }}">{{ user.profile.vk }}</a>
 
 {% else %}
 
 <p><a href="{% url 'login' %}" class="btn btn-primary btn-large">Log in</a></p>
 {% endif %}
+
+
+{% endblock %}
