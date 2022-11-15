@@ -2,13 +2,19 @@
 
 {% block content %}
 
+{% if user.is_authenticated %}
+
+<h3>U are already logged in</h3>
+<p><a href="{% url 'images' %}" class="btn btn-primary btn-large">Go back to the main page</a></p>
+
+{% else %}
+
 <h2>{{ title }}</h2>
 <div class="row">
     <div class="col-md-8">
         <section id="loginForm">
             <form action="." method="post" class="form-horizontal">
                 {% csrf_token %}
-                <h4>Use a local account to log in.</h4>
                 <hr />
                 <div class="form-group">
                     <label for="id_username" class="col-md-2 control-label">User name</label>
@@ -25,7 +31,7 @@
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <input type="hidden" name="next" value="/" />
-                        <input type="submit" value="Log in" class="btn btn-primary" />
+                        <input type="submit" value="Log in" class="btn btn-default" />
                     </div>
                 </div>
                 {% if form.errors %}
@@ -39,8 +45,9 @@
     </div>
 </div>
 
-{% endblock %}
+{% endif %}
 
+{% endblock %}
 
 {% block scripts %}
 
