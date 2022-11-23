@@ -33,5 +33,11 @@
 <p><a href="{% url 'login' %}" class="btn btn-primary btn-large">Log in</a></p>
 {% endif %}
 
+{% endblock %}
+
+{% block scripts %}
+
+{% load static %}
+<script src="{% static 'app/scripts/jquery.validate.min.js' %}"></script>
 
 {% endblock %}

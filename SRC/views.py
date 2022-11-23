@@ -1,8 +1,9 @@
 from datetime import datetime
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpRequest
 from SRC.models import Image, Profile
 from SRC.forms import RegisterForm, AddImage
+from django.contrib.auth.models import User
 
 
 
