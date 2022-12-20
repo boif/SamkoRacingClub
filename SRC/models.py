@@ -11,7 +11,7 @@ class Image(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
-    profile_pic = models.ImageField(upload_to='images/profile')
+    profile_pic = models.ImageField(upload_to='images/profile', default='images\profile\default.png', blank=True)
     vk = models.CharField(max_length=50, null=True, blank=True)
 
     objects = models.Manager()
