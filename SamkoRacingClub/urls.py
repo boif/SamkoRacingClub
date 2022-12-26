@@ -4,6 +4,7 @@ from django.conf.urls.static import static
 from django.urls import path
 from django.contrib import admin
 from SRC import views, forms
+from SRC.views import profile
 from django.contrib.auth.views import LoginView, LogoutView
 
 urlpatterns = [
@@ -12,7 +13,7 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('images/', views.images, name='images'),
     path('addimage/', views.addimage, name='addimage'),
-    path('profile/', views.profile, name='profile'),
+    path('profile/<int:pk>/', profile.as_view(), name='profile'),
     path('signup/', views.register, name='signup'),
     path('login/',
          LoginView.as_view

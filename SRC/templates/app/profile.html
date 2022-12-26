@@ -15,9 +15,9 @@
 <div class="panel-body">
 <div class="text-center" id="author">
 
-<img src="{{ MEDIA_URL }} {{ user.profile.profile_pic.url }}" height=292.5 width=292.5>
-<h3>{{ user.username }}</h3>
-<a href="{{ user.profile.vk }}">{{ user.profile.vk }}</a>
+<img src="{{ MEDIA_URL }} {{ profile.profile_pic.url }}" height=292.5 width=292.5>
+<h3>{{ page_user }}</h3>
+<a href="{{ profile.vk }}">{{ profile.vk }}</a>
 
 {% else %}
 

@@ -14,6 +14,5 @@ class Profile(models.Model):
     profile_pic = models.ImageField(upload_to='images/profile', default='images\profile\default.png', blank=True)
     vk = models.CharField(max_length=50, null=True, blank=True)
 
-    objects = models.Manager()
     def __str__(self):
         return str(self.user)
