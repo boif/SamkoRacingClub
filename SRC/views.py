@@ -4,11 +4,11 @@ from django.http import HttpRequest
 from SRC.models import Image, Profile
 from SRC.forms import RegisterForm, AddImage, ProfileForm
 from django.views.generic.detail import DetailView
+from django.contrib.auth.models import User
 
 
 
 def home(request):
-    assert isinstance(request, HttpRequest)
     return render(
         request,
         'app/index.html',
@@ -19,7 +19,6 @@ def home(request):
     )
 
 def contact(request):
-    assert isinstance(request, HttpRequest)
     return render(
         request,
         'app/contact.html',
@@ -30,7 +29,6 @@ def contact(request):
     )
 
 def about(request):
-    assert isinstance(request, HttpRequest)
     return render(
         request,
         'app/about.html',
@@ -41,7 +39,6 @@ def about(request):
     )
 
 def images(request):
-    assert isinstance(request, HttpRequest)
     images = Image.objects.filter()
     return render(
         request,
@@ -54,7 +51,6 @@ def images(request):
     )
 
 def register(request):
-    assert isinstance(request, HttpRequest)
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         profile_form = ProfileForm(request.POST)
@@ -75,7 +71,6 @@ def register(request):
     )
 
 def addimage(request):
-    assert isinstance(request, HttpRequest)
     if request.method == 'POST':
         form = AddImage(request.POST, request.FILES)
         if form.is_valid():
@@ -88,7 +83,6 @@ def addimage(request):
         'app/addimage.html',
         {'form': form,
         'title':'Add image',
-        'year': datetime.now().year,
         }
     )
 
@@ -99,6 +93,6 @@ class profile(DetailView):
     def get_context_data(self, *args, **kwargs):
         users = Profile.objects.all()
         context = super(profile, self).get_context_data(*args, **kwargs)
-        page_user = get_object_or_404(Profile, id=self.kwargs['pk'])
+        page_user = get_object_or_404(Profile, user_id=self.kwargs['pk'])
         context['page_user'] = page_user
         return context

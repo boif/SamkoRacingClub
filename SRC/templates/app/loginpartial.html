@@ -1,4 +1,3 @@
-
 {% if user.is_authenticated %}
 <form id="logoutForm" action="/logout/" method="post" class="navbar-right">
     {% csrf_token %}
@@ -10,6 +9,7 @@
             </a>
             <ul role="menu" class="dropdown-menu" id="dropdownmain-navigation0" aria-labelledby="main-navigation0">
                 <li><a href="{% url 'addimage' %}">Add image</a></li>
+                <li><a href="{% url 'profile' user.id %}">Profile</a></li>
             </ul>
         </li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
