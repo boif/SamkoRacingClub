@@ -25,7 +25,7 @@ class RegisterForm(UserCreationForm):
 class AddImage(forms.ModelForm):
     class Meta:
         model = Image
-        fields = ('title', 'image')
+        fields = ('title', 'description', 'image')
 
 class ProfileForm(forms.ModelForm):
     class Meta:

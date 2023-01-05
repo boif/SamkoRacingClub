@@ -75,6 +75,9 @@ def addimage(request):
         form = AddImage(request.POST, request.FILES)
         if form.is_valid():
             form.save()
+            listening = form.save(commit=False)
+            listening.author = request.user
+            listening.save()
             return redirect('/images/')
     else:
         form = AddImage()
