@@ -1,10 +1,9 @@
 from datetime import datetime
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpRequest
 from SRC.models import Image, Profile
 from SRC.forms import RegisterForm, AddImage, ProfileForm
 from django.views.generic.detail import DetailView
-from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 
 
@@ -70,14 +69,14 @@ def register(request):
          },
     )
 
+@login_required
 def addimage(request):
     if request.method == 'POST':
         form = AddImage(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
-            listening = form.save(commit=False)
-            listening.author = request.user
-            listening.save()
+            addimg = form.save(commit=False)
+            addimg.author = request.user
+            addimg.save()
             return redirect('/images/')
     else:
         form = AddImage()

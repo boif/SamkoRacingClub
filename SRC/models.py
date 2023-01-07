@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
     
 class Image(models.Model):
-    author = models.ForeignKey(User, on_delete=models.CASCADE, primary_key=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=70, verbose_name='Name')
     description = models.CharField(max_length=300, null=True, blank=True, verbose_name='Description')
     image = models.ImageField(upload_to='images', verbose_name='Image')
